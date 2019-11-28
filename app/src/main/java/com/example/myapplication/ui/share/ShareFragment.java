@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.share;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,33 +33,19 @@ public class ShareFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_share, container, false);
 
         final TextView MemoText = root.findViewById(R.id.MemoText);
+
         Switch editSwitch = root.findViewById(R.id.editSwitch);
         editSwitch.setText("Save");
         editSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
-              //  MemoText.setEnabled(!MemoText.isEnabled());
-//                if (MemoText.getFreezesText() == true) {
-//                    MemoText.setFreezesText(false);
-//                    MemoText.setFocusable(false);
-//                    MemoText.setFocusableInTouchMode(false);
-//                } else {
-//                    MemoText.setFreezesText(true);
-//                    MemoText.setFocusable(true);
-//                    MemoText.setFocusableInTouchMode(true);
-//                }
-                if (MemoText.getInputType() == TYPE_NULL) {
-                    MemoText.setInputType(TYPE_CLASS_TEXT);
+                if (buttonView.isChecked()) {
+                    MemoText.setFocusable(false);
+                    MemoText.setFocusableInTouchMode(false);
                 } else {
-                    MemoText.setInputType(TYPE_NULL);
+                    MemoText.setFocusable(true);
+                    MemoText.setFocusableInTouchMode(true);
                 }
-             //   MemoText.setFreezesText(MemoText.getFreezesText());
-               // MemoText.setInputType(MemoText.getInputType());
-                //MemoText.setFreezesText(!MemoText.getFreezesText());
-
             }
-
         });
 
 //        shareViewModel.getText().observe(this, new Observer<String>() {
